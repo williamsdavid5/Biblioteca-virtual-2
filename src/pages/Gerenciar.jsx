@@ -21,5 +21,9 @@ export default function Gerenciar() {
 
     })
 
-    return <>Gerenciar</>
+    return (
+        <div id='container'>
+            <p>gerenciar</p>
+        </div>
+    )
 }

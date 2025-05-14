@@ -1,0 +1,15 @@
+#bloco {
+    background-color: #D9D9D9;
+    color: black;
+    width: 97%;
+    margin: 5px 0px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+#disponivel {
+    font-weight: 700;
+}
