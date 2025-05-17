@@ -1,4 +1,4 @@
-#bloco {
+.bloco {
     background-color: #D9D9D9;
     color: black;
     width: 97%;
@@ -10,6 +10,51 @@
     justify-content: space-between;
 }
 
-#disponivel {
+.expandido {
+    background-color: white;
+    align-items: center;
+}
+
+.bloco:hover {
+    transform: scale(1.02);
+    background-color: white;
+    transition: transform 0.1s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.bloco:active {
+    transform: scale(0.98);
+}
+
+.disponivel {
     font-weight: 700;
+}
+
+.disponivelExpandido {
+    width: 50%;
+    text-align: justify;
+}
+
+.botaoEmprestar {
+    background-color: black;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.botaoEmprestar:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.botaoDevolver {
+    background-color: red;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.botaoDevolver:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.titulo {
+    width: 50%;
+    padding-left: 5px;
 }
