@@ -1,9 +1,12 @@
-import './gerenciar.css'
+import './gerenciar.css';
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import ElementoGerenciar from '../Components/ElementoGerenciar';
 import { useNavigate } from 'react-router-dom';
 import ModalGerenciar from '../Components/ModalGerenciar';
+
+import PilhaLivros from '../assets/images/pilhaLivros.png';
+import MeninaLivro from '../assets/images/meninaLivro.png';
 
 export default function Gerenciar() {
     const [livros, setLivros] = useState([]);
@@ -14,7 +17,7 @@ export default function Gerenciar() {
     const [modalAberto, setModalAberto] = useState(false);
 
     function abrirModal(livro = null) {
-        setLivroSelecionado(livro)
+        setLivroSelecionado(livro);
         setModalAberto(!modalAberto);
     }
 
@@ -41,20 +44,17 @@ export default function Gerenciar() {
                 <img src="https://i.gifer.com/VAyR.gif" id={'loadingGif'} alt="" />
                 <p style={{ marginTop: '15px' }}>Resgatando dados</p>
             </div>
-
-        )
+        );
     }
 
     return (
-
         <>
             <div id="containerGerenciar">
-
                 <div id='divInputGerenciar'>
                     <button
                         id='botaoVoltar'
                         onClick={() => {
-                            navigate('/')
+                            navigate('/');
                         }}
                     >Voltar</button>
                     <input
@@ -76,7 +76,7 @@ export default function Gerenciar() {
                             return (
                                 livro.nome.toLowerCase().includes(texto) ||
                                 livro.autor.toLowerCase().includes(texto)
-                            )
+                            );
                         })
                         .sort((a, b) => a.nome.localeCompare(b.nome))
                         .map(livro => (
@@ -87,7 +87,7 @@ export default function Gerenciar() {
                 {modalAberto && (
                     <ModalGerenciar
                         fecharModal={() => {
-                            setModalAberto(false)
+                            setModalAberto(false);
                         }}
                         livro={livroSelecionado}
                         atualizarLivros={fetchLivros}
@@ -95,14 +95,12 @@ export default function Gerenciar() {
                 )}
 
                 <div id='divImgEsquerda'>
-                    <img src="src/assets/images/pilhaLivros.png" alt="" id='imgEsquerda' />
+                    <img src={PilhaLivros} alt="" id='imgEsquerda' />
                 </div>
                 <div id='divImgDireita'>
-                    <img id='imgDireita' src="src/assets/images/meninaLivro.png" alt="" />
+                    <img id='imgDireita' src={MeninaLivro} alt="" />
                 </div>
             </div>
         </>
-
-
-    )
+    );
 }

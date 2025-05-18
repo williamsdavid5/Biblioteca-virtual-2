@@ -1,8 +1,11 @@
-import './emprestar.css'
-import LivroElemento from '../Components/LivroElemento'
+import './emprestar.css';
+import LivroElemento from '../Components/LivroElemento';
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+
+import MocaLivro from '../assets/images/moçaLivro.png';
+import PilhaLivros from '../assets/images/pilhaLivros2.png';
 
 export default function Emprestar() {
     const [livros, setLivros] = useState([]);
@@ -31,18 +34,16 @@ export default function Emprestar() {
                 <img src="https://i.gifer.com/VAyR.gif" id={'loadingGif'} alt="" />
                 <p style={{ marginTop: '15px' }}>Resgatando dados</p>
             </div>
-
-        )
+        );
     }
 
     return (
         <div id="container">
-
             <div id='divInput'>
                 <button
                     id='botaoVoltar'
                     onClick={() => {
-                        navigate('/')
+                        navigate('/');
                     }}
                 >Voltar</button>
                 <input
@@ -52,15 +53,13 @@ export default function Emprestar() {
                 />
             </div>
 
-
-
             {livros
                 .filter(livro => {
                     const texto = pesquisa.toLowerCase();
                     return (
                         livro.nome.toLowerCase().includes(texto) ||
                         livro.autor.toLowerCase().includes(texto)
-                    )
+                    );
                 })
                 .sort((a, b) => a.nome.localeCompare(b.nome))
                 .map(livro => (
@@ -68,11 +67,11 @@ export default function Emprestar() {
                 ))}
 
             <div id='divImgEsquerda'>
-                <img src="src/assets/images/moçaLivro.png" alt="" id='imgEsquerda' />
+                <img src={MocaLivro} alt="" id='imgEsquerda' />
             </div>
             <div id='divImgDireita'>
-                <img id='imgDireita' src="src/assets/images/pilhaLivros2.png" alt="" />
+                <img id='imgDireita' src={PilhaLivros} alt="" />
             </div>
         </div>
-    )
+    );
 }

@@ -9,7 +9,7 @@ import Emprestar from './pages/Emprestar.jsx'
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Biblioteca-virtual-2">
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/gerenciar' element={<Gerenciar />} />
