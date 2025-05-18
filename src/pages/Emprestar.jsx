@@ -2,11 +2,13 @@ import './emprestar.css'
 import LivroElemento from '../Components/LivroElemento'
 import { useEffect, useState } from 'react';
 import api from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 export default function Emprestar() {
     const [livros, setLivros] = useState([]);
     const [carregando, setCarregando] = useState(true);
     const [pesquisa, setPesquisa] = useState('');
+    const navigate = useNavigate();
 
     async function fetchLivros() {
         try {
@@ -36,11 +38,20 @@ export default function Emprestar() {
     return (
         <div id="container">
 
-            <input
-                type="text"
-                placeholder='Pesquise por nome ou autor'
-                onChange={(e) => setPesquisa(e.target.value)}
-            />
+            <div id='divInput'>
+                <button
+                    id='botaoVoltar'
+                    onClick={() => {
+                        navigate('/')
+                    }}
+                >Voltar</button>
+                <input
+                    type="text"
+                    placeholder='Pesquise por nome ou autor'
+                    onChange={(e) => setPesquisa(e.target.value)}
+                />
+            </div>
+
 
 
             {livros

@@ -2,11 +2,13 @@ import './gerenciar.css'
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import ElementoGerenciar from '../Components/ElementoGerenciar';
+import { useNavigate } from 'react-router-dom';
 
 export default function Gerenciar() {
     const [livros, setLivros] = useState([]);
     const [carregando, setCarregando] = useState(true);
     const [pesquisa, setPesquisa] = useState('');
+    const navigate = useNavigate();
 
     async function fetchLivros() {
         try {
@@ -36,11 +38,26 @@ export default function Gerenciar() {
     return (
         <div id="containerGerenciar">
 
-            <input
-                type="text"
-                placeholder='Pesquise por nome ou autor'
-                onChange={(e) => setPesquisa(e.target.value)}
-            />
+            <div id='divInputGerenciar'>
+                <button
+                    id='botaoVoltar'
+                    onClick={() => {
+                        navigate('/')
+                    }}
+                >Voltar</button>
+                <input
+                    id='inputGerenciar'
+                    type="text"
+                    placeholder='Pesquise por nome ou autor'
+                    onChange={(e) => setPesquisa(e.target.value)}
+                />
+                <button
+                    id='botaoNovo'
+                    onClick={() => {
+
+                    }}
+                >Novo</button>
+            </div>
 
             <div className='gradeLivros'>
                 {livros
