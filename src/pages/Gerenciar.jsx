@@ -13,7 +13,7 @@ export default function Gerenciar() {
     const [livroSelecionado, setLivroSelecionado] = useState(null);
     const [modalAberto, setModalAberto] = useState(false);
 
-    function abrirModal(livro) {
+    function abrirModal(livro = null) {
         setLivroSelecionado(livro)
         setModalAberto(!modalAberto);
     }
@@ -65,7 +65,7 @@ export default function Gerenciar() {
                     />
                     <button
                         id='botaoNovo'
-                        onClick={abrirModal}
+                        onClick={() => abrirModal(null)}
                     >Novo</button>
                 </div>
 
@@ -85,9 +85,13 @@ export default function Gerenciar() {
                 </div>
 
                 {modalAberto && (
-                    <ModalGerenciar fecharModal={() => {
-                        setModalAberto(false)
-                    }} livro={livroSelecionado}></ModalGerenciar>
+                    <ModalGerenciar
+                        fecharModal={() => {
+                            setModalAberto(false)
+                        }}
+                        livro={livroSelecionado}
+                        atualizarLivros={fetchLivros}
+                    ></ModalGerenciar>
                 )}
 
                 <div id='divImgEsquerda'>
