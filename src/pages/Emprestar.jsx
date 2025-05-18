@@ -6,6 +6,7 @@ import api from '../services/api';
 export default function Emprestar() {
     const [livros, setLivros] = useState([]);
     const [carregando, setCarregando] = useState(true);
+    const [pesquisa, setPesquisa] = useState('');
 
     async function fetchLivros() {
         try {
@@ -20,7 +21,6 @@ export default function Emprestar() {
 
     useEffect(() => {
         fetchLivros();
-
     }, []);
 
     if (carregando) {
@@ -35,10 +35,33 @@ export default function Emprestar() {
 
     return (
         <div id="container">
-            <input type="text" placeholder='Pesquisar' />
-            {livros.map((livro) => {
-                return <LivroElemento key={livro.id} livro={livro} atualizarLivros={fetchLivros} />
-            })}
+
+            <input
+                type="text"
+                placeholder='Pesquise por nome ou autor'
+                onChange={(e) => setPesquisa(e.target.value)}
+            />
+
+
+            {livros
+                .filter(livro => {
+                    const texto = pesquisa.toLowerCase();
+                    return (
+                        livro.nome.toLowerCase().includes(texto) ||
+                        livro.autor.toLowerCase().includes(texto)
+                    )
+                })
+                .sort((a, b) => a.nome.localeCompare(b.nome))
+                .map(livro => (
+                    <LivroElemento key={livro.id} livro={livro} atualizarLivros={fetchLivros} />
+                ))}
+
+            <div id='divImgEsquerda'>
+                <img src="src/assets/images/moçaLivro.png" alt="" id='imgEsquerda' />
+            </div>
+            <div id='divImgDireita'>
+                <img id='imgDireita' src="src/assets/images/meninaLivro.png" alt="" />
+            </div>
         </div>
     )
 }

@@ -37,12 +37,15 @@ export default function LivroElemento({ livro, atualizarLivros }) {
         <>
             <div className={`bloco ${expandido ? 'expandido' : ''}`} onClick={() => setExpandido(!expandido)}>
                 <p className={`${expandido ? 'titulo' : ''}`} style={{ fontWeight: 700 }}>{livro.nome}
+                    <br /><span>{livro.autor}</span>
 
                     {expandido && (
                         <>
-                            <p>Autor: {livro.autor}<br />
-                                Ano de publicação: {livro.ano_publicacao}<br />
-                            </p>
+                            <span>
+                                <br />
+                                Publicação: {livro.ano_publicacao}
+                                <br />
+                            </span>
                             <button
                                 className={livro.disponivel ? 'botaoEmprestar' : 'botaoDevolver'}
                                 onClick={(e) => {
@@ -61,9 +64,11 @@ export default function LivroElemento({ livro, atualizarLivros }) {
                 <p style={{ color: livro.disponivel ? 'black' : 'red' }} className={`disponivel ${expandido ? 'disponivelExpandido' : ''}`}>
 
                     {expandido && (
-                        <p>{livro.descricao}</p>
+                        <span>
+                            {livro.descricao}
+                            <br />
+                        </span>
                     )}
-
                     {livro.disponivel ? 'Disponível!' : 'Indisponível'}</p>
             </div>
             {modalAberto && livroSelecionado && (

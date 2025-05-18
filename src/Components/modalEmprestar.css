@@ -46,3 +46,9 @@
     background-color: red;
     color: white;
 }
+
+@media (max-width: 600px) {
+    #modalEmprestar {
+        width: 80%;
+    }
+}
