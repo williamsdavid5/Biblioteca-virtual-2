@@ -1,12 +1,7 @@
-# React + Vite
+# Biblioteca Virtual 2
+Um projeto simples de uma biblioteca virtual, as funções não fazem muito sentido, mas a ideia aqui era praticar meu conhecimento em react ao mesmo tempo que reforço meu aprendizado recém adquirido de Node.
+### Sempre evoluindo
+Este projeto é uma melhoria da [Biblioteca Virtual](https://github.com/williamsdavid5/Biblioteca-virtual) criada em HTML e Javascrit puros que armazenavam os dados na memória do navegador, dessa vez eu quis fazer algo mais realista, isso representa meus avanços em programação web desde que desenvolvi este projeto inicial.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Sobre o desenvolvimento
+O projeto foi desenvolvido em React + Vite, tendo seu backend desenvolvido em Node com a ajuda do Prisma, o banco de dados Postgre foi hospedado em [Neon.tech](https://neon.tech/) e a [API](https://github.com/williamsdavid5/Biblioteca-virtual-2-backend) foi hospedada no [Render](https://render.com/).
