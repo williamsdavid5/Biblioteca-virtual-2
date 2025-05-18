@@ -60,7 +60,7 @@ export default function Emprestar() {
                 <img src="src/assets/images/moçaLivro.png" alt="" id='imgEsquerda' />
             </div>
             <div id='divImgDireita'>
-                <img id='imgDireita' src="src/assets/images/meninaLivro.png" alt="" />
+                <img id='imgDireita' src="src/assets/images/pilhaLivros2.png" alt="" />
             </div>
         </div>
     )

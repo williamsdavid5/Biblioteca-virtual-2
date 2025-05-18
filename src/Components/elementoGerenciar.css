@@ -1,0 +1,22 @@
+.blocoGerenciar {
+    background-image: linear-gradient(to right, #ededdd 0%, #D4D3DD 51%, #EFEFBB 100%);
+    background-size: 200% auto;
+    border: solid 1px white;
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 80px;
+}
+
+.blocoGerenciar:hover {
+    transform: scale(1.02);
+    background-color: white;
+    background-position: right center;
+    /* transition: 0.5s; */
+    transition: transform 0.1s ease-in-out, background-color 0.2s ease-in-out, background-position 0.5s;
+}
+
+.blocoGerenciar:active {
+    transform: scale(0.98);
+}

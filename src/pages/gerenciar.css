@@ -1,0 +1,44 @@
+#containerGerenciar {
+    width: 500px;
+    height: 80vh;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.gradeLivros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    #containerGerenciar {
+        flex: 1;
+        width: 90%;
+        height: auto;
+        top: 0;
+        position: absolute;
+        border-radius: 0px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.0);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    input {
+        height: 40px;
+    }
+}

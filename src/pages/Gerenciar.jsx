@@ -1,29 +1,70 @@
+import './gerenciar.css'
 import { useEffect, useState } from 'react';
 import api from '../services/api';
+import ElementoGerenciar from '../Components/ElementoGerenciar';
 
 export default function Gerenciar() {
     const [livros, setLivros] = useState([]);
+    const [carregando, setCarregando] = useState(true);
+    const [pesquisa, setPesquisa] = useState('');
+
+    async function fetchLivros() {
+        try {
+            const response = await api.get('/livros');
+            setLivros(response.data);
+            setCarregando(false);
+        } catch (error) {
+            console.log('Erro ao buscar livros: ', error);
+            alert('Erro ao buscar livros');
+        }
+    }
 
     useEffect(() => {
-        async function fetchLivros() {
-            try {
-                const response = await api.get('/livros');
-                setLivros(response.data);
-
-                console.log(livros);
-
-            } catch (error) {
-                console.log('Erro ao buscar livros: ', error);
-            }
-        }
-
         fetchLivros();
+    }, []);
 
-    })
+    if (carregando) {
+        return (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <img src="https://i.gifer.com/VAyR.gif" id={'loadingGif'} alt="" />
+                <p style={{ marginTop: '15px' }}>Resgatando dados</p>
+            </div>
+
+        )
+    }
 
     return (
-        <div id='container'>
-            <p>gerenciar</p>
+        <div id="containerGerenciar">
+
+            <input
+                type="text"
+                placeholder='Pesquise por nome ou autor'
+                onChange={(e) => setPesquisa(e.target.value)}
+            />
+
+            <div className='gradeLivros'>
+                {livros
+                    .filter(livro => {
+                        const texto = pesquisa.toLowerCase();
+                        return (
+                            livro.nome.toLowerCase().includes(texto) ||
+                            livro.autor.toLowerCase().includes(texto)
+                        )
+                    })
+                    .sort((a, b) => a.nome.localeCompare(b.nome))
+                    .map(livro => (
+                        <ElementoGerenciar key={livro.id} livro={livro} atualizarLivros={fetchLivros} />
+                    ))}
+            </div>
+
+
+
+            <div id='divImgEsquerda'>
+                <img src="src/assets/images/pilhaLivros.png" alt="" id='imgEsquerda' />
+            </div>
+            <div id='divImgDireita'>
+                <img id='imgDireita' src="src/assets/images/meninaLivro.png" alt="" />
+            </div>
         </div>
     )
 }
